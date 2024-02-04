@@ -1,8 +1,6 @@
 import customtkinter as ctk
 import tkinter.messagebox as tkmb
 
-
-# Selecting GUI theme - dark, light , system (for system default)
 ctk.set_appearance_mode("dark")
 
 # Selecting color theme - blue, green, dark-blue
