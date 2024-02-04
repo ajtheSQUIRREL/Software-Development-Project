@@ -13,8 +13,8 @@ app.title("Weather Application")
 
 def signup():
 
-    username = "Geeks"
-    password = "12345"
+    username = ""
+    password = ""
     new_window = ctk.CTkToplevel(app)
 
     new_window.title("New Window")
