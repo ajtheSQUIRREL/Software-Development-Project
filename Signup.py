@@ -21,19 +21,6 @@ def signup():
 
     new_window.geometry("350x150")
 
-    if user_entry.get() == username and user_pass.get() == password:
-        tkmb.showinfo(
-            title="Login Successful", message="You have logged in Successfully"
-        )
-        ctk.CTkLabel(
-            new_window, text="GeeksforGeeks is best for learning ANYTHING !!"
-        ).pack()
-    elif user_entry.get() == username and user_pass.get() != password:
-        tkmb.showwarning(title="Wrong password", message="Please check your password")
-    elif user_entry.get() != username and user_pass.get() == password:
-        tkmb.showwarning(title="Wrong username", message="Please check your username")
-    else:
-        tkmb.showerror(title="Login Failed", message="Invalid Username and password")
 
 
 label = ctk.CTkLabel(app, text="Sign Up To Get Access To The Weather Application")
