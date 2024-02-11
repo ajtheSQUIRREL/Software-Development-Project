@@ -1,19 +1,14 @@
 from tkinter import *
 import tkinter as tk
-# from geopy.geocoders import Nominatim
 from tkinter import ttk, messagebox
-
-# from timezonefinder import timezone TimezoneFinder
-from datetime import datetime
-
-# import requests
+from PIL import Image, ImageTk
 import pytz
 
 
 root = Tk()
 root.title("weather App")
 root.geometry("900x500+300+200")
-root.resizable(True, True)
+root.resizable(False, False)
 
 # Search Box
 
@@ -48,5 +43,34 @@ logo.place(x=150, y=100)
 frame_image = PhotoImage(file="box.png")
 frame_myimage = Label(image=frame_image)
 frame_myimage.pack(padx=5, pady=5, side=BOTTOM)
+
+
+# label
+label1 = Label(
+    root, text="WIND", font=("Helvetica", 15, "bold"), fg="white", bg="#1ab5ef"
+)
+label1.pack(padx=5, pady=5, side=BOTTOM)
+label1.place(x=150, y=400)
+
+label2 = Label(
+    root, text="HUMIDITY", font=("Helvetica", 15, "bold"), fg="white", bg="#1ab5ef"
+)
+label2.pack(padx=5, pady=5, side=BOTTOM)
+label2.place(x=270, y=400)
+
+
+label3 = Label(
+    root, text="DESCRIPTION", font=("Helvetica", 15, "bold"), fg="white", bg="#1ab5ef"
+)
+label3.pack(padx=5, pady=5, side=BOTTOM)
+label3.place(x=440, y=400)
+
+
+label4 = Label(
+    root, text="PRESSURE", font=("Helvetica", 15, "bold"), fg="white", bg="#1ab5ef"
+)
+label4.pack(padx=5, pady=5, side=BOTTOM)
+label4.place(x=650, y=400)
+
 
 root.mainloop()
