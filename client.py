@@ -3,12 +3,30 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 from PIL import Image, ImageTk
 import pytz
-
+from geopy import Nominatim
+from timezonefinder import TimezoneFinder
+from datetime import datetime
 
 root = Tk()
 root.title("weather App")
 root.geometry("900x500+300+200")
 root.resizable(False, False)
+
+def getWeather():
+    city=textfield.get()
+    
+    geolocation =Nominatim(user_agent="geoapiExercises")
+    location = geolocation.geocode(city)
+    obj =TimezoneFinder()
+    result = obj.Timezone_at(lng=location.longitude,length=location.latitude)
+    # print (result)
+    
+    home=pytz.timezone(result)
+    local_time=datetime.now(home)
+    current_time=local_time.strftime("%I:%M:%p")
+    
+    clock.config(text="current_time")
+    name.config(text="CURRENT TIME")
 
 # Search Box
 
@@ -29,7 +47,7 @@ textfield.place(x=38, y=47)
 textfield.focus()
 
 search_icon = PhotoImage(file="search_icon.png")
-myimage_icon = Button(image=search_icon, borderwidth=0, cursor="hand2", bg="#404040")
+myimage_icon = Button(image=search_icon, borderwidth=0, cursor="hand2", bg="#404040",command=getWeather)
 myimage_icon.place(x=392, y=39)
 
 # logo
@@ -37,6 +55,13 @@ myimage_icon.place(x=392, y=39)
 logo_image = PhotoImage(file="logo.png")
 logo = Label(image=logo_image)
 logo.place(x=150, y=100)
+
+#time
+
+name=Label(root,font=("arial",15,"bold"),)
+name.place(x=30, y=100)
+clock=Label(root,font=("Helvetica",15,),)
+clock.place(x=30, y=130)
 
 # Buttom Boxx
 
@@ -71,6 +96,23 @@ label4 = Label(
 )
 label4.pack(padx=5, pady=5, side=BOTTOM)
 label4.place(x=650, y=400)
+
+t=Label(font=("arial",70,"bold"),fg="#ee666d")
+t.place(x=400,y=150)
+c=Label(font=("arial",15,"bold"))
+c.place(x=400,y=250)
+
+w=Label(text="... ",font=("arial",15,"bold"),bg="#1ab5ef")
+w.place(x=160,y=430)
+
+h=Label(text="... ",font=("arial",15,"bold"),bg="#1ab5ef")
+h.place(x=300,y=430)
+
+d=Label(text="... ",font=("arial",15,"bold"),bg="#1ab5ef")
+d.place(x=490,y=430)
+
+p=Label(text="... ",font=("arial",15,"bold"),bg="#1ab5ef")
+p.place(x=700,y=430)
 
 
 root.mainloop()
