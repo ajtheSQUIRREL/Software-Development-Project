@@ -18,7 +18,7 @@ if __name__ == "__main__":
     def getWeather():
         city = textfield.get()
 
-        geolocation = Nominatim(user_agent="geoapiExercises")
+        geolocation = Nominatim(user_agent="GetLoc")
         location = geolocation.geocode(city)
         obj = TimezoneFinder()
         Latitude = location.latitude
@@ -33,18 +33,15 @@ if __name__ == "__main__":
         name.config(text="CURRENT TIME")
         temperature = weather_data(Latitude, Longitude)
         print(temperature)
-        
-        #weather
-        t.config(text=(temp,"°"))       
-        c.config(text=(condition,"|","FEELS","Like",temp,"°"))
-        
-        w.config(text= Wind)
-        h.config(text= Humidity)
-        d.config(text= Description)
-        p.config(text= Pressure)
-        
-        
-    
+
+        # weather
+        # t.config(text=(temp,"°"))
+        # c.config(text=(condition,"|","FEELS","Like",temp,"°"))
+
+        # w.config(text= Wind)
+        # h.config(text= Humidity)
+        # d.config(text= Description)
+        # p.config(text= Pressure)
 
     # Search Box
 
