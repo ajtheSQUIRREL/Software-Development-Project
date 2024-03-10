@@ -1,55 +1,39 @@
-import customtkinter as ctk
-import tkinter.messagebox as tkmb
+from tkinter import *
+root=Tk()
+root.title('Login')
+root.geometry('925x500+300+200')
+root.configure(bg="#fff")
+root.resizable (False, False)
+img=PhotoImage(file='login.png')
+Label(root, image=img, bg='white'). place (x=50,y=50)
+frame=Frame (root, width=350,height=350, bg="white")
+frame.place(x=480,y=70)
+heading=Label (frame,text='Sign Up', fg='#57a1f8', bg='white', font=('Microsoft YaHei UI Light', 23, 'bold'))
+heading.place(x=100,y=5)
 
-ctk.set_appearance_mode("dark")
+mail=Entry(frame, width=25, fg='black', border=0,bg="white", font=('Microsoft YaHei UI Light',11))
+mail.place(x=30,y=80)
+mail.insert(0, 'E-mail')
+Frame (frame, width=295,height=2, bg='black'). place (x=25,y=100)
 
-# Selecting color theme - blue, green, dark-blue
-ctk.set_default_color_theme("blue")
+user=Entry(frame, width=25, fg='black', border=0,bg="white", font=('Microsoft YaHei UI Light',11))
+user.place(x=30,y=120)
+user.insert(0, 'Username')
+Frame (frame, width=295,height=2, bg='black'). place (x=25,y=140)
 
-app = ctk.CTk()
-app.geometry("400x400")
-app.title("Weather Application")
+code=Entry(frame, width=25, fg='black', border=0,bg="white", font=('Microsoft YaHei UI Light',11))
+code.place(x=30,y=160)
+code.insert(0, 'Password')
+Frame (frame, width=295,height=2, bg='black'). place (x=25,y=180)
 
-
-def signup():
-
-    username = ""
-    password = ""
-    new_window = ctk.CTkToplevel(app)
-
-    new_window.title("New Window")
-
-    new_window.geometry("350x150")
-
-
-
-label = ctk.CTkLabel(app, text="Sign Up To Get Access To The Weather Application")
-
-# label.pack(pady=20, expand=True)
-
-
-frame = ctk.CTkFrame(master=app)
-frame.pack(pady=20, padx=40, fill="both", expand=True)
-
-label = ctk.CTkLabel(master=frame, text="Sign Up")
-label.pack(pady=12, padx=10)
+code2=Entry(frame, width=25, fg='black', border=0,bg="white", font=('Microsoft YaHei UI Light',11))
+code2.place(x=30,y=200)
+code2.insert(0, 'Re Enter Password')
+Frame (frame, width=295,height=2, bg='black'). place (x=25,y=220)
 
 
-user_name = ctk.CTkEntry(master=frame, placeholder_text="Username")
-user_name.pack(pady=12, padx=10)
 
-user_email = ctk.CTkEntry(master=frame, placeholder_text="Email")
-user_email.pack(pady=12, padx=10)
-
-user_address = ctk.CTkEntry(master=frame, placeholder_text="Address")
-user_address.pack(pady=12, padx=10)
-
-user_pass = ctk.CTkEntry(master=frame, placeholder_text="Password", show="*")
-user_pass.pack(pady=12, padx=10)
+Button(frame, width=39, pady=7,text='Sign Up', bg='#57a1f8', fg='white', border=0).place (x=35,y=250) 
 
 
-button = ctk.CTkButton(master=frame, text="Sign UP", command=signup)
-button.pack(pady=12, padx=10)
-
-
-app.mainloop()
+root.mainloop()
