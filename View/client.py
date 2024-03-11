@@ -6,8 +6,15 @@ import pytz
 from geopy import Nominatim
 from timezonefinder import TimezoneFinder
 from datetime import datetime
+import sys
+
+sys.path.insert(
+    1,
+    "E://Study//3-1//Software Development Project//Weather Application//DEV//Software-Development-Project//Model",
+)
 import server
 
+global textfield, Nominatim, TimezoneFinder, datetime, pytz, clock, name, server
 if __name__ == "__main__":
 
     root = Tk()
