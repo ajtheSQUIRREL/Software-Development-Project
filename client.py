@@ -6,7 +6,7 @@ import pytz
 from geopy import Nominatim
 from timezonefinder import TimezoneFinder
 from datetime import datetime
-from server import *
+import server
 
 if __name__ == "__main__":
 
@@ -31,7 +31,7 @@ if __name__ == "__main__":
 
         clock.config(text=current_time)
         name.config(text="CURRENT TIME")
-        temp, Description, Humidity, Pressure, Wind = weather_data(city)
+        temp, Description, Humidity, Pressure, Wind = server.weather_data(city)
         print(temp)
 
         # weather

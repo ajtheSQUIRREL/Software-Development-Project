@@ -1,62 +1,63 @@
-#Login Page
-import customtkinter as ctk
-import tkinter.messagebox as tkmb
+from tkinter import *
 
-ctk.set_appearance_mode("dark")
+root = Tk()
+root.title("Login")
+root.geometry("925x500+300+200")
+root.configure(bg="#fff")
+root.resizable(False, False)
+img = PhotoImage(file="login.png")
+Label(root, image=img, bg="white").place(x=50, y=50)
+frame = Frame(root, width=350, height=350, bg="white")
+frame.place(x=480, y=70)
+heading = Label(
+    frame,
+    text="Sign in",
+    fg="#57a1f8",
+    bg="white",
+    font=("Microsoft YaHei UI Light", 23, "bold"),
+)
+heading.place(x=100, y=5)
 
-# Selecting color theme - blue, green, dark-blue
-ctk.set_default_color_theme("blue")
+user = Entry(
+    frame,
+    width=25,
+    fg="black",
+    border=0,
+    bg="white",
+    font=("Microsoft YaHei UI Light", 11),
+)
+user.place(x=30, y=80)
+user.insert(0, "Username")
+Frame(frame, width=295, height=2, bg="black").place(x=25, y=107)
 
-app = ctk.CTk()
-app.geometry("400x400")
-app.title("Weather Application")
-
-
-def login():
-
-    username = ""
-    password = ""
-    new_window = ctk.CTkToplevel(app)
-
-    new_window.title("New Window")
-
-    new_window.geometry("350x150")
-
-    if user_entry.get() == username and user_pass.get() == password:
-        tkmb.showinfo(
-            title="Login Successful", message="You have logged in Successfully"
-        )
-        ctk.CTkLabel(
-            new_window, text="GeeksforGeeks is best for learning ANYTHING !!"
-        ).pack()
-    elif user_entry.get() == username and user_pass.get() != password:
-        tkmb.showwarning(title="Wrong password", message="Please check your password")
-    elif user_entry.get() != username and user_pass.get() == password:
-        tkmb.showwarning(title="Wrong username", message="Please check your username")
-    else:
-        tkmb.showerror(title="Login Failed", message="Invalid Username and password")
-
-
-label = ctk.CTkLabel(app, text="")
-
-# label.pack(pady=20, expand=True)
-
-
-frame = ctk.CTkFrame(master=app)
-frame.pack(pady=20, padx=40, fill="both", expand=True)
-
-label = ctk.CTkLabel(master=frame, text="Login")
-label.pack(pady=12, padx=10)
+code = Entry(
+    frame,
+    width=25,
+    fg="black",
+    border=0,
+    bg="white",
+    font=("Microsoft YaHei UI Light", 11),
+)
+code.place(x=30, y=150)
+code.insert(0, "Password")
+Frame(frame, width=295, height=2, bg="black").place(x=25, y=177)
 
 
-user_name = ctk.CTkEntry(master=frame, placeholder_text="Username")
-user_name.pack(pady=12, padx=10)
+Button(
+    frame, width=39, pady=7, text="Sign in", bg="#57a1f8", fg="white", border=0
+).place(x=35, y=204)
+label = Label(
+    frame,
+    text="Don't have an account?",
+    fg="black",
+    bg="white",
+    font=("Microsoft YaHei UI Light", 9),
+)
+label.place(x=75, y=270)
+sign_up = Button(
+    frame, width=6, text="Sign up", border=0, bg="white", cursor="hand2", fg="#57a1f8"
+)
+sign_up.place(x=215, y=270)
 
-user_pass = ctk.CTkEntry(master=frame, placeholder_text="Password", show="*")
-user_pass.pack(pady=12, padx=10)
 
-
-button = ctk.CTkButton(master=frame, text="Log IN", command=login)
-button.pack(pady=12, padx=10)
-
-app.mainloop()
+root.mainloop()

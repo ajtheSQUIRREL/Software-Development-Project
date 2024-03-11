@@ -33,5 +33,4 @@ def weather_data(location=None):
     except:
         print("Sorry,You Entered Wrong Location.")
 
-
 # weather_data()
