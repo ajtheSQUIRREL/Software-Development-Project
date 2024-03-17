@@ -24,13 +24,15 @@ def weather_data(location=None):
 
         # print(f'Country        : {dict_content["sys"]["country"]
         # print(f"Place          : {location.capitalize()}")
-        Temperature = round(temperature, 2)
-        Condition = dict_content["weather"][0]["description"].capitalize()
-        Humidity = dict_content["main"]["humidity"]
-        pressure = dict_content["main"]["pressure"]
-        wind = dict_content["wind"]["speed"]
-        return Temperature, Condition, Humidity, pressure, wind
+        detail = {}
+        detail["Temperature "] = round(temperature, 2)
+        detail["Condition"] = dict_content["weather"][0]["description"].capitalize()
+        detail["Humidity"] = dict_content["main"]["humidity"]
+        detail["pressure"] = dict_content["main"]["pressure"]
+        detail["wind"] = dict_content["wind"]["speed"]
+        return detail
     except:
         print("Sorry,You Entered Wrong Location.")
+
 
 # weather_data()

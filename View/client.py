@@ -38,9 +38,13 @@ if __name__ == "__main__":
 
         clock.config(text=current_time)
         name.config(text="CURRENT TIME")
-        temp, Description, Humidity, Pressure, Wind = server.weather_data(city)
-        print(temp)
-
+        info = server.weather_data(city)
+        print(info)
+        temp = info["Temperature"]
+        Description = info["Condition"]
+        wind = info["wind"]
+        Humidity = info["Humidity"]
+        Pressure = info["Pressure"]
         # weather
         t.config(text=(temp, "°"))
         c.config(text=(Description, "|", "FEELS", "Like", temp, "°"))
