@@ -4,7 +4,8 @@ from unittest.mock import patch, mock_open
 import os
 
 # Import the signup function to be tested
-from your_signup_module import button_clicked
+from Signup import button_clicked
+
 
 class TestSignupFunctionality(unittest.TestCase):
 
@@ -26,14 +27,14 @@ class TestSignupFunctionality(unittest.TestCase):
         self.code_entry.insert(0, "newpassword")
 
         # Patch the built-in 'open' function to return a mock file object
-        with patch('builtins.open', mock_open(read_data=self.mock_file_content)) as mock_file:
-            with patch('tkinter.messagebox.showwarning') as mock_showwarning:
+        with patch(
+            "builtins.open", mock_open(read_data=self.mock_file_content)
+        ) as mock_file:
+            with patch("tkinter.messagebox.showwarning") as mock_showwarning:
                 button_clicked()
 
         # Assert that the 'open' function was called to write to file
-        mock_file.assert_called_once_with(
-            "path/to/Accounts.txt", "a"
-        )
+        mock_file.assert_called_once_with("path/to/Accounts.txt", "a")
 
         # Assert that no warning message was shown (successful signup)
         mock_showwarning.assert_not_called()
@@ -46,8 +47,10 @@ class TestSignupFunctionality(unittest.TestCase):
         self.code_entry.insert(0, "password123")
 
         # Patch the built-in 'open' function to return a mock file object
-        with patch('builtins.open', mock_open(read_data=self.mock_file_content)) as mock_file:
-            with patch('tkinter.messagebox.showwarning') as mock_showwarning:
+        with patch(
+            "builtins.open", mock_open(read_data=self.mock_file_content)
+        ) as mock_file:
+            with patch("tkinter.messagebox.showwarning") as mock_showwarning:
                 button_clicked()
 
         # Assert that the 'open' function was not called to write to file
@@ -60,6 +63,7 @@ class TestSignupFunctionality(unittest.TestCase):
 
     def tearDown(self):
         self.root.destroy()
+
 
 if __name__ == "__main__":
     unittest.main()
