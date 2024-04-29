@@ -39,7 +39,7 @@ def button_clicked_in():
     file.close()
     if flag == 1:
         root.destroy()
-        with open("Client.py") as app:
+        with open("UI.py") as app:
             exec(app.read())
 
 

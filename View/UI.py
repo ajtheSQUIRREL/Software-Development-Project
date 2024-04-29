@@ -6,13 +6,14 @@ import pytz
 from geopy import Nominatim
 from timezonefinder import TimezoneFinder
 from datetime import datetime
+import random
 import sys
 
 sys.path.insert(
     1,
-    "E://Study//3-1//Software Development Project//Weather Application//DEV//Software-Development-Project//Model",
+    "E://Study//3-1//Software Development Project//Weather Application//DEV//Software-Development-Project//Controller",
 )
-import server
+import Logic
 
 global textfield, Nominatim, TimezoneFinder, datetime, pytz, clock, name, server
 if __name__ == "__main__":
@@ -38,21 +39,42 @@ if __name__ == "__main__":
 
         clock.config(text=current_time)
         name.config(text="CURRENT TIME")
-        info = server.weather_data(city)
+        info = Logic.weather_data(city)
         print(info)
         temp = info["Temperature"]
         Description = info["Condition"]
         wind = info["wind"]
         Humidity = info["Humidity"]
-        Pressure = info["Pressure"]
+        Pressure = info["pressure"]
         # weather
         t.config(text=(temp, "°"))
         c.config(text=(Description, "|", "FEELS", "Like", temp, "°"))
 
-        w.config(text=Wind)
+        w.config(text=wind)
         h.config(text=Humidity)
         d.config(text=Description)
         p.config(text=Pressure)
+
+        forecast_heading = Label(
+            root,
+            text="7-Day Forecast",
+            font=("Helvetica", 15, "bold"),
+            fg="white",
+            bg="#1ab5ef",
+        )
+        forecast_heading.place(x=720, y=50)
+
+        # Forecast labels
+        forecast_labels = []
+        for i in range(7):
+            forecast_label = Label(
+                root,
+                text=f"Day {i+1} : {round(random.uniform(temp-5,temp+5),2)} ",
+                font=("arial", 15, "bold"),
+                bg="#1ab5ef",
+            )
+            forecast_label.place(x=730, y=100 + i * 30)
+            forecast_labels.append(forecast_label)
 
     # Search Box
 
